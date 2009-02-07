@@ -10,7 +10,7 @@ module NameAndStuff
   def self.stuff
     stuff = ["WTF?!", "ALL THE FUCKING TIME!", "FTW!", "OMG!",
              "ROTFLMAOASDF!!", "IN BED!", "now GTFO!",
-             "<small>secret python programmer irrc</small>"]
+             "<small>secret python programmer iirc</small>"]
     stuff[rand(stuff.length)]
   end
 end
