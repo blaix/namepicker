@@ -8,8 +8,8 @@ module NameAndStuff
   end
   
   def self.stuff
-    stuff = ["WTF?!", "ALL THE FUCKING TIME!", "FTW!", "OMG!", "LOL!",
-             "ROTFLMAOASDF!!", "IN BED!", "GTFO!",
+    stuff = ["WTF?!", "ALL THE FUCKING TIME!", "FTW!", "OMG!",
+             "ROTFLMAOASDF!!", "IN BED!", "now GTFO!",
              "<small>secret python programmer irrc</small>"]
     stuff[rand(stuff.length)]
   end
