@@ -28,4 +28,5 @@ __END__
   %body
     %center
       %h2 and the winner is:
-      %h1= @name + "... " + @stuff
+      %h1
+        %marquee{ :width => "50%" }= @name + "... " + @stuff
