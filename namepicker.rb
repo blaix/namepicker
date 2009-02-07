@@ -1,22 +1,24 @@
 require 'rubygems'
 require 'sinatra'
 
-module NameAndStuff
-  def self.name
-    names = File.read('./names.txt').strip.split(/\r|\n/)
-    names[rand(names.length)].upcase
+get '/' do
+  if session[:names].nil? || session[:names].empty?
+    session[:names] = File.read('./names.txt').strip.split(/\r|\n/)
   end
   
-  def self.stuff
-    stuff = ["WTF?!", "ALL THE FUCKING TIME!", "FTW!", "OMG!",
-             "ROTFLMAOASDF!!", "IN BED!", "now GTFO!",
-             "<small>secret python programmer iirc</small>"]
-    stuff[rand(stuff.length)]
+  if session[:stuff].nil? || session[:stuff].empty?
+    session[:stuff] = ["WTF?!", "ALL THE FUCKING TIME!", "FTW!", "OMG!",
+                       "ROTFLMAOASDF!!", "IN BED!", "now GTFO!",
+                       "<small>secret python programmer iirc</small>"]
   end
-end
+  
+  name = session[:names][rand(session[:names].length)]
+  stuff = session[:stuff][rand(session[:stuff].length)]
+  
+  session[:names].delete(name)
+  session[:stuff].delete(stuff)
 
-get '/' do
-  @name_and_stuff = NameAndStuff.name + "... " + NameAndStuff.stuff
+  @name_and_stuff = name.upcase + "... " + stuff
   haml :index
 end
 
