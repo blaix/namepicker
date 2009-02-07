@@ -1,3 +1,4 @@
+
     echo "Name One\nName two" > names.txt
     sudo gem install sinatra
     ruby namepicker.rb
