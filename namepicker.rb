@@ -1,13 +1,29 @@
 require 'rubygems'
 require 'sinatra'
 
+module NameAndStuff
+  def self.name
+    names = File.read('./names.txt').strip.split(/\r|\n/)
+    names[rand(names.length)].upcase
+  end
+  
+  def self.stuff
+    stuff = ["WTF?!", "ALL THE FUCKING TIME!", "FTW!", "OMG!", "LOL!",
+             "ROTFLMAOASDF!!", "IN BED!", "now GTFO!"]
+    stuff[rand(stuff.length)]
+  end
+end
+
 get '/' do
-  names = File.read('./names.txt').strip.split(/\r|\n/)
-  name = names[rand(names.length)].upcase
-  haml <<-EOS
+  @name_and_stuff = NameAndStuff.name + "... " + NameAndStuff.stuff
+  haml :index
+end
+
+__END__
+
+@@index
 %html
   %body
-    %strong OMG THE WINNER IS...
-    %h1 #{name} OMG!
-  EOS
-end
+    %center
+      %h2 and the winner is...
+      %h1= @name_and_stuff
