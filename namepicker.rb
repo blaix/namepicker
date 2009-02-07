@@ -12,13 +12,12 @@ get '/' do
                        "<small>secret python programmer iirc</small>"]
   end
   
-  name = session[:names][rand(session[:names].length)]
-  stuff = session[:stuff][rand(session[:stuff].length)]
+  @name = session[:names][rand(session[:names].length)]
+  @stuff = session[:stuff][rand(session[:stuff].length)]
   
-  session[:names].delete(name)
-  session[:stuff].delete(stuff)
+  session[:names].delete(@name)
+  session[:stuff].delete(@stuff)
 
-  @name_and_stuff = name.upcase + "... " + stuff
   haml :index
 end
 
@@ -29,4 +28,4 @@ __END__
   %body
     %center
       %h2 and the winner is:
-      %h1= @name_and_stuff
+      %h1= @name + "... " + @stuff
