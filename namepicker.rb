@@ -9,7 +9,8 @@ module NameAndStuff
   
   def self.stuff
     stuff = ["WTF?!", "ALL THE FUCKING TIME!", "FTW!", "OMG!", "LOL!",
-             "ROTFLMAOASDF!!", "IN BED!", "now GTFO!"]
+             "ROTFLMAOASDF!!", "IN BED!", "GTFO!",
+             "<small>secret python programmer irrc</small>"]
     stuff[rand(stuff.length)]
   end
 end
@@ -25,5 +26,5 @@ __END__
 %html
   %body
     %center
-      %h2 and the winner is...
+      %h2 and the winner is:
       %h1= @name_and_stuff
