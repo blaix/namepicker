@@ -25,7 +25,7 @@ __END__
 
 @@index
 %html
-  %body
+  %body{ :style => "background-color: yellow" }
     %center
       %h2 and the winner is:
       %h1
