@@ -29,4 +29,7 @@ __END__
     %center
       %h2 and the winner is:
       %h1
-        %marquee{ :width => "50%" }= @name + "... " + @stuff
+        %marquee{ :width => "50%" }
+          %img{ :src => "images/gator_walking.gif" }
+          = @name + "... " + @stuff
+          %img{ :src => "images/gator_laying.gif" }
