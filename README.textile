@@ -1,5 +1,4 @@
-Install the sinatra gem, drop a names.txt file with one name per line into the same directory as namepicker.rb, then:
-
+    echo "Name One\nName two" > names.txt
+    sudo gem install sinatra
     ruby namepicker.rb
-    
-and open http://localhost:4567
+    open http://localhost:4567
