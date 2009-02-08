@@ -1,6 +1,8 @@
-Clone, and then:
+Sinatra app originally written in 30 seconds to choose attendee names at
+"acts_as_conference":http://actsasconference 2009 for prize giveaways, but for
+some reason I kept tweaking it...
 
-    echo "Name One\nName two" > names.txt
     sudo gem install sinatra
+    echo "Name One\nName two" > names.txt
     ruby namepicker.rb
     open http://localhost:4567

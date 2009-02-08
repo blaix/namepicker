@@ -1,23 +1,30 @@
 require 'rubygems'
 require 'sinatra'
 
-get '/' do
-  if session[:names].nil? || session[:names].empty?
-    session[:names] = File.read('./names.txt').strip.split(/\r|\n/)
-  end
-  
-  if session[:stuff].nil? || session[:stuff].empty?
-    session[:stuff] = ["WTF?!", "ALL THE FUCKING TIME!", "FTW!", "OMG!",
-                       "ROTFLMAOASDF!!", "IN BED!", "now GTFO!",
-                       "<small>secret python programmer iirc</small>"]
-  end
-  
-  @name = session[:names][rand(session[:names].length)]
-  @stuff = session[:stuff][rand(session[:stuff].length)]
-  
-  session[:names].delete(@name)
-  session[:stuff].delete(@stuff)
+enable :sessions
 
+helpers do
+  def get_lines_and_randomize(path_to_file)
+    File.read(path_to_file).strip.split(/\r|\n/).sort_by { rand }
+  end
+end
+
+before do
+  session[:names] ||= []
+  session[:zingers] ||= []
+  
+  if session[:names].empty?
+    session[:names] = get_lines_and_randomize('./data/names.txt')
+  end
+  
+  if session[:zingers].empty?
+    session[:zingers] = get_lines_and_randomize('./data/zingers.txt')
+  end
+end
+
+get '/' do
+  @name = session[:names].pop
+  @zinger = session[:zingers].pop  
   haml :index
 end
 
@@ -29,7 +36,8 @@ __END__
     %center
       %h2 and the winner is:
       %h1
-        %marquee{ :width => "50%" }
+        %marquee{ :width => "75%" }
           %img{ :src => "images/gator_walking.gif" }
-          = @name + "... " + @stuff
+          = @name + "... "
+          %small= @zinger
           %img{ :src => "images/gator_laying.gif" }
