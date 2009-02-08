@@ -1,6 +1,6 @@
-Sinatra app originally written in 30 seconds to choose attendee names at
-"acts_as_conference":http://actsasconference 2009 for prize giveaways, but for
-some reason I kept growing and tweaking it...
+Sinatra app originally written in 30 seconds to choose random names from a
+list of "acts_as_conference":http://actsasconference.com 2009 attendees for
+prize giveaways, but for some reason I kept growing and tweaking it...
 
     sudo gem install sinatra
     cp data/names.txt.example data/names.txt
